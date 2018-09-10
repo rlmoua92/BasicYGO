@@ -1,0 +1,15 @@
+TODO:
+-Clean up code
+	-add comments
+-Store card data in db
+	-write code to reference db data to create Card
+-Possible CardController class?
+	-handles Card overhead so Card class can just contain card data instead of things related to instance (i.e. position, is_set, etc...)
+-Read DeckList data from .txt files
+	-instead of having code to manually add all cards we want, store this data in a .txt file and choose which .txt file we want to use as our DeckList
+-Implement MP2
+-Implement Spell Cards + Effect Monsters
+-Implement Fusion?
+-GUI
+-Implement connectivity?
+	-so that both players don't play from the same screen/command line

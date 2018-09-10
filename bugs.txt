@@ -1,0 +1,7 @@
+BUGS
+-Multiple monsters of same name on field (FIXED - since decklists are stored as dictionaries, cards with same name used the same instance when decklist was converted to deck using .to_list() function)
+	-change position of one, sets position of all to that position
+		-i.e. RED-EYES 1 is currently SET in DEFENSE on the field. Summon RED-EYES 2. RED-EYES 1 is now also FACE-UP in ATTACK
+-Monsters that can attack (FIXED - using wrong reference for monsters. was using monster_zones[i] but should have been using monster_zones[possible_monsters[i]])
+	-Attacker list doesn't update monster data accurately
+		-i.e. BLUE-EYES and RED-EYES can attack. BLUE-EYES attacks. Shows that BLUE-EYES can attack. When you select BLUE-EYES its actually RED-EYES and RED-EYES attacks
