@@ -1,6 +1,14 @@
 TODO:
 -Clean up code
-	-add comments
+	-PEP8 style guide
+		-replace tabs with 4 spaces
+	-add comments and docstrings
+		-PEP257
+	-helper functions
+	-replace range() for loops with enumerate()
+	-replace references to None (i.e. use Exceptions instead)
+	-update functions to use keyword arguments
+	-remove get and set methods
 -Store card data in db
 	-write code to reference db data to create Card
 -Possible CardController class?
