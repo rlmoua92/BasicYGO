@@ -6,21 +6,27 @@ from player import Player
 
 
 def battle(monster1, monster2):
+    """Handles the logic of a battle between 2 monsters.
+    Returns a 2-tuple with the first value being if at least one of the
+    monsters is destroyed or not. The second value returns the amount of
+    lifepoints one of the players will lose due to the battle.
+    """
     pos1 = monster1.get_position()
     stats1 = monster1.get_stat()
     pos2 = monster2.get_position()
     stats2 = monster2.get_stat()
     diff = stats1 - stats2
     if pos2 == "ATTACK":
-        return [True, diff]
+        return (True, diff)
     else:
         if diff > 0:
-            return [True, 0]
+            return (True, 0)
         else:
-            return [False, diff]
+            return (False, diff)
 
 
 def try_int_input(prompt):
+    """Returns a user's input as an int."""
     result = -1
     try:
         result = int(input(prompt))
@@ -52,11 +58,11 @@ def main():
         bewd, dm, rebd, bls, ss, dmg, fgd, cg, cod, gtfk, obelisk, slifer, 
         ra, kuriboh
     ]
-    deck_list1 = DeckList(1)
+    deck_list1 = DeckList()
     for monster in cardlist:
         for i in range(3):
             deck_list1.add_card(monster)
-    deck_list2 = DeckList(2)
+    deck_list2 = DeckList()
     for monster in cardlist:
         for i in range(3):
             deck_list2.add_card(monster)
