@@ -1,5 +1,6 @@
-from decklist import DeckList
 from random import shuffle
+
+from decklist import DeckList
 
 
 class Deck:
