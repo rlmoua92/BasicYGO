@@ -13,9 +13,17 @@ class Field:
             if card == None:
                 result += "X"
             elif card.get_is_set():
-                result += "(SET) {name}: {stats} {position}".format(name=card.get_name(), stats=card.get_stat(), position=card.get_position())
+                result += "(SET) {name}: {stats} {position}".format(
+                	name=card.get_name(), 
+                	stats=card.get_stat(), 
+                	position=card.get_position()
+                )
             else:
-                result += "{name}: {stats} {position}".format(name=card.get_name(), stats=card.get_stat(), position=card.get_position())
+                result += "{name}: {stats} {position}".format(
+                	name=card.get_name(), 
+                	stats=card.get_stat(), 
+                	position=card.get_position()
+                )
             result += " | "
         #result += "\n| "
         #for zone in self.st_zones:
@@ -35,9 +43,15 @@ class Field:
             if card == None:
                 result += "X"
             elif card.get_is_set():
-                result += "SET CARD: {position}".format(position=card.get_position())
+                result += "SET CARD: {position}".format(
+                	position=card.get_position()
+                )
             else:
-                result += "{name}: {stats} {position}".format(name=card.get_name(), stats=card.get_stat(), position=card.get_position())
+                result += "{name}: {stats} {position}".format(
+                	name=card.get_name(), 
+                	stats=card.get_stat(), 
+                	position=card.get_position()
+                )
             result += " | "
         #result += "\n| "
         #for zone in self.st_zones:

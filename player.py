@@ -58,7 +58,8 @@ class Player:
             if type(card) == Monster:
                 monsters_in_hand.append(card)
         open_monster_zones = self.field.get_open_zones()
-        return self.can_summon and len(monsters_in_hand) > 0 and len(open_monster_zones) > 0
+        return (self.can_summon and len(monsters_in_hand) > 0 and 
+        		len(open_monster_zones) > 0)
 
     def set_can_summon(self, can_summon):
         self.can_summon = can_summon

@@ -31,7 +31,9 @@ class Monster(Card):
         self.can_attack = False
 
     def full_string(self):
-        return "{name}\n{level}\nMONSTER\n{desc}\n[ATK:{attack}/DEF:{defense}]".format(name=self.name, level="*" * self.level, desc=self.desc, attack=self.attack, defense=self.defense)
+        return "{name}\n{level}\nMONSTER\n{desc}\n[ATK:{attack}/DEF:{defense}]"\
+        		.format(name=self.name, level="*" * self.level, desc=self.desc, 
+        			    attack=self.attack, defense=self.defense)
 
     def get_level(self):
         return self.level
