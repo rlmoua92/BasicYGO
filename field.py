@@ -1,10 +1,11 @@
 #from card_zone import *
 
+
 class Field:
+
     def __init__(self):
         self.monster_zones = [None for i in range(5)]
         #self.st_zones = [SpellTrapCardZone() for i in range(5)]
-
 
     def __repr__(self):
         result = ""

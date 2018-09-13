@@ -4,15 +4,13 @@ from deck import Deck
 from field import Field
 from player import Player
 
+
 def battle(monster1, monster2):
     pos1 = monster1.get_position()
     stats1 = monster1.get_stat()
-
     pos2 = monster2.get_position()
     stats2 = monster2.get_stat()
-
     diff = stats1 - stats2
-
     if pos2 == "ATTACK":
         return [True, diff]
     else:
@@ -21,6 +19,7 @@ def battle(monster1, monster2):
         else:
             return [False, diff]
 
+
 def try_int_input(prompt):
     result = -1
     try:
@@ -28,6 +27,7 @@ def try_int_input(prompt):
     except ValueError:
         pass
     return result
+
 
 def main():
     bewd = Monster("Blue-Eyes White Dragon", "This legendary dragon is a "
@@ -48,67 +48,56 @@ def main():
     slifer = Monster("Slifer the Sky Dragon", "", 12, 4000, 4000)
     ra = Monster("The Winged Dragon of Ra", "", 12, 4000, 4000)
     kuriboh = Monster("Kuriboh", "", 1, 300, 200)
-
     cardlist = [
         bewd, dm, rebd, bls, ss, dmg, fgd, cg, cod, gtfk, obelisk, slifer, 
         ra, kuriboh
     ]
-
     deck_list1 = DeckList(1)
     for monster in cardlist:
         for i in range(3):
             deck_list1.add_card(monster)
-
     deck_list2 = DeckList(2)
     for monster in cardlist:
         for i in range(3):
             deck_list2.add_card(monster)
 
-    #Set Up Game
-
+    #Set Up Duel
     deck1 = Deck(deck_list1)
     deck2 = Deck(deck_list2)
-
     hand1 = []
     hand2 = []
-
     field1 = Field()
     field2 = Field()
-
     gy1 = []
     gy2 = []
-
     lp1 = 8000
     lp2 = 8000
-
     turn_count = 0
     phase = "DP"
 
-    #Game Start
+    #Duel Start
     deck1.shuffle()
     deck2.shuffle()
-
     player1 = Player(1, hand1, gy1, deck1, field1, lp1)
     player2 = Player(2, hand2, gy2, deck2, field2, lp2)
     players = [player1, player2]
-
     player1.draw(5)
     player2.draw(5)
-
     turn_player_idx = 0
     winner = None
-
     print("DUEL START")
 
+    #Duel Loop
     while player1.get_lp() > 0 and player2.get_lp() > 0 and winner == None:
+        #Print Field
         print("\n\n=====================================================")
         print("TURN: {}".format(turn_count + 1))
         turn_player = players[turn_player_idx]
         opposite_player_idx = abs(turn_player_idx - 1)
         opposite_player = players[abs(turn_player_idx - 1)]
+
         #Draw Phase
         phase = "DP"
-        ##Draw Card
         if turn_player.can_draw():
             print("Player {player_id_1} draws a card".format(
                   player_id_1=turn_player.get_id()
@@ -137,6 +126,8 @@ def main():
         if turn_player.can_battle() and turn_count > 0:
             possible_moves.append("Go to Battle Phase")
         possible_moves.append("End Turn")
+
+        #Possible Moves - User Choice Loop
         while len(possible_moves) > 0:
             print("OPPONENT'S FIELD:")
             print("{} LP".format(opposite_player.get_lp()))
@@ -393,9 +384,11 @@ def main():
                     winner = turn_player.get_id()
                     break
 
+            #UNIVERSAL CHOICES
             elif possible_moves[choice] == "End Turn":
                 phase = "EP"
 
+            #REST CHOICES
             possible_moves = []
             if phase == "MP":
                 if turn_player.get_can_summon():
@@ -440,6 +433,7 @@ def main():
             else:
                 print("You shouldn't be here.")
     
+    #Game Over
     print("PLAYER {} WINS!".format(winner))
 
 if __name__ == '__main__':

@@ -1,4 +1,5 @@
 class Card:
+
     def __init__(self, name, desc):
         self.name = name
         self.desc = desc
@@ -19,7 +20,9 @@ class Card:
     def get_is_set(self):
         return self.is_set
 
+
 class Monster(Card):
+
     def __init__(self, name, desc, level, attack, defense):
         super().__init__(name, desc)
         self.level = level
@@ -99,9 +102,11 @@ class Monster(Card):
     def unlock_position(self):
         self.can_change_position = True
 
+
 class Spell(Card):
     def __repr__(self):
         return "{name}\nSPELL\n{desc}".format(name=self.name, desc=self.desc)
+
 
 class Trap(Card):
     def __repr__(self):

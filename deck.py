@@ -1,7 +1,9 @@
 from decklist import DeckList
 from random import shuffle
 
+
 class Deck:
+
     def __init__(self, decklist):
         self.deck = decklist.to_list()
         self.deck_count = len(self.deck)
@@ -25,7 +27,6 @@ class Deck:
         elif position == "BOTTOM":
             self.deck.append(card)
         self.deck_count += 1
-
 
     def is_empty(self):
         return self.deck_count == 0

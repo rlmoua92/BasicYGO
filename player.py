@@ -1,5 +1,6 @@
 from card import Card, Monster
 
+
 class Player:
     def __init__(self, id, hand, gy, deck, field, lp=8000):
         self.id = id

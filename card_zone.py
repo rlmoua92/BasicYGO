@@ -1,4 +1,5 @@
 """class CardZone:
+
     def __init__(self):
         self.card = None
         self.set = False
@@ -38,7 +39,9 @@
     def lock_attack(self):
         self.attack_lock = True
 
+
 class MonsterCardZone(CardZone):
+
     def __init__(self):
         super().__init__()
         self.position = None
@@ -70,10 +73,19 @@ class MonsterCardZone(CardZone):
             old_position = self.position.upper()
             self.position = new_position.upper()
             old_set = self.set
-            if old_set == True and old_position.upper() == "DEFENSE" and new_position.upper() == "ATTACK":
+            if (old_set == True and old_position.upper() == "DEFENSE" and 
+            	new_position.upper() == "ATTACK"):
                 self.set = False
             self.position_lock = True
-            print("Card changed from {old_set} {old_position} position to {new_set} {new_position} position".format(old_set="FACE-UP" if old_set else "FACE-DOWN", new_set="FACE-UP" if self.set else "FACE-DOWN", old_position=old_position, new_position=self.position))
+            print(
+            	"Card changed from {old_set} {old_position} position to "
+            	"{new_set} {new_position} position".format(
+            	    old_set="FACE-UP" if old_set else "FACE-DOWN", 
+            	    new_set="FACE-UP" if self.set else "FACE-DOWN", 
+            	    old_position=old_position, 
+            	    new_position=self.position
+            	)
+           	)
 
 
 class SpellTrapCardZone(CardZone):
