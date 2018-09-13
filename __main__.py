@@ -479,7 +479,7 @@ def main():
                         format(len(current_hand))
                     )
                     while choice > len(current_hand) or choice < 0:
-                        choice = input("Please enter a valid choice: ")
+                        choice = try_int_input("Please enter a valid choice: ")
                     current_hand.pop(choice)
                 turn_count += 1
                 turn_player_idx = opposite_player_idx
