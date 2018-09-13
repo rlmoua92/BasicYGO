@@ -56,11 +56,11 @@ class Player:
     def get_can_summon(self):
         monsters_in_hand = []
         for card in self.hand:
-            if type(card) == Monster:
+            if isinstance(card, Monster):
                 monsters_in_hand.append(card)
         open_monster_zones = self.field.get_open_zones()
-        return (self.can_summon and len(monsters_in_hand) > 0 and 
-        		len(open_monster_zones) > 0)
+        return (self.can_summon and len(monsters_in_hand) and 
+        		len(open_monster_zones))
 
     def set_can_summon(self, can_summon):
         self.can_summon = can_summon
@@ -68,7 +68,7 @@ class Player:
     def can_change_pos(self):
         monsters_can_change = []
         for monster in self.field.monster_zones:
-            if monster != None:
+            if monster:
                 if monster.can_change_pos():
                     monsters_can_change.append(monster)
         return len(monsters_can_change) > 0
@@ -76,7 +76,7 @@ class Player:
     def can_battle(self):
         monsters_can_battle = []
         for monster in self.field.monster_zones:
-            if monster != None:
+            if monster:
                 if monster.get_can_attack():
                     monsters_can_battle.append(monster)
         return len(monsters_can_battle) > 0

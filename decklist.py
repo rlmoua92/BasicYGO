@@ -4,8 +4,7 @@ from card import Card, Monster
 class DeckList:
 
     def __init__(self, id, decklist=None, min=40, max=60):
-        if type(decklist) != dict:
-            print("Invalid type! Decklist must be a dict. Try again.")
+        if not decklist:
             self.decklist = {}
         else:
             self.decklist = decklist

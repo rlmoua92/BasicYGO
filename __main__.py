@@ -91,7 +91,7 @@ def main():
     # This while loop contols the actions that the players can take in the
     # Duel. It will not close until the Duel is over (i.e. a Player's 
     # LifePoints hit 0, a Player can't draw any more cards, etc...)
-    while player1.get_lp() > 0 and player2.get_lp() > 0 and winner == None:
+    while player1.get_lp() > 0 and player2.get_lp() > 0 and not winner:
         # This section prints out the visualtion of the current state of
         # of the Duel (i.e. Turn Count, Each Player's Hand, Field, LP, etc...)
         print("\n\n=====================================================")
@@ -140,7 +140,7 @@ def main():
 
         # This loop tells the Player what actions they can currently take.
         # It uses an input prompt so the Player can select an action.
-        while len(possible_moves) > 0:
+        while possible_moves:
             print("OPPONENT'S FIELD:")
             print("{} LP".format(opposite_player.get_lp()))
             print("HAND: {}".format(["x"] * len(opposite_player.get_hand())))
@@ -257,7 +257,7 @@ def main():
                     "Which card would you like to attack with: "
                 )
                 while (monster_choice >= len(possible_monsters) or 
-                       monster_choice <0):
+                       monster_choice < 0):
                     monster_choice = try_int_input(
                         "Please enter a valid choice: "
                     )
@@ -266,7 +266,7 @@ def main():
                 possible_targets = []
                 possible_targets = opposite_player.get_field().get_monsters()
                 opp_monster_zones = opposite_player.get_field().monster_zones
-                if len(possible_targets) > 0:
+                if len(possible_targets):
                     for i in range(len(possible_targets)):
                         print("[{idx}] {monster} {stat} {pos}".format(
                             idx=i, 
@@ -291,7 +291,7 @@ def main():
                         "Which card would you like to attack: "
                     )
                     while (target_choice >= len(possible_targets) or 
-                           target_choice <0):
+                           target_choice < 0):
                         target_choice = try_int_input(
                             "Please enter a valid choice: "
                         )

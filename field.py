@@ -9,9 +9,9 @@ class Field:
 
     def __repr__(self):
         result = ""
-        result +="| "
+        result += "| "
         for card in self.monster_zones:
-            if card == None:
+            if not card:
                 result += "X"
             elif card.get_is_set():
                 result += "(SET) {name}: {stats} {position}".format(
@@ -41,7 +41,7 @@ class Field:
         result = ""
         result +="| "
         for card in self.monster_zones:
-            if card == None:
+            if not card:
                 result += "X"
             elif card.get_is_set():
                 result += "SET CARD: {position}".format(
@@ -68,21 +68,21 @@ class Field:
     def get_open_zones(self):
         open_zones = []
         for i in range(len(self.monster_zones)):
-            if self.monster_zones[i] == None:
+            if not self.monster_zones[i]:
                 open_zones.append(i)
         return open_zones
 
     def get_monsters(self):
         monsters = []
         for i in range(len(self.monster_zones)):
-            if self.monster_zones[i] != None:
+            if self.monster_zones[i]:
                 monsters.append(i)
         return monsters
 
     def get_can_attack(self):
         can_attack_list = []
         for i in range(len(self.monster_zones)):
-            if self.monster_zones[i] != None:
+            if self.monster_zones[i]:
                 if self.monster_zones[i].get_can_attack():
                     can_attack_list.append(i)
         return can_attack_list
@@ -90,7 +90,7 @@ class Field:
     def get_can_change_pos(self):
         can_change_pos_list = []
         for i in range(len(self.monster_zones)):
-            if self.monster_zones[i] != None:
+            if self.monster_zones[i]:
                 if self.monster_zones[i].can_change_pos():
                     can_change_pos_list.append(i)
         return can_change_pos_list
