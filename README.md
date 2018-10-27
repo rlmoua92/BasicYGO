@@ -26,7 +26,7 @@ git clone https://github.com/rlmoua92/BasicYGO.git
 
 ## Usage
 
-Tp run the application run the following command in your terminal:
+To run the application run the following command in your terminal:
 
 ```
 python3 __main__.py
