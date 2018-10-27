@@ -1,7 +1,5 @@
 TODO:
 -Clean up code
-	-add comments and docstrings
-		-PEP257
 	-helper functions
 	-replace range() for loops with enumerate()
 	-replace references to None (i.e. use Exceptions instead)
