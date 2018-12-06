@@ -19,7 +19,7 @@ def battle(monster1, monster2):
     if pos2 == "ATTACK":
         return (True, diff)
     else:
-        if diff > 0:
+        if diff >= 0:
             return (True, 0)
         else:
             return (False, diff)
@@ -356,7 +356,7 @@ def main():
                     # This section handles the logic for the battle scenario
                     # in which the attacker ties with an Attack Position 
                     # target.
-                    elif battle_result[0] and battle_result[1] == 0:
+                    elif battle_result[0] and battle_result[1] == 0 and target.get_position() == "ATTACK":
                         print(
                             "BATTLE TIE. {attacker} and {target} DESTROYED"\
                             .format(
@@ -391,7 +391,7 @@ def main():
                     # This section handles the logic for the battle scenario
                     # in which the attacker wins against a Defense Position 
                     # target.
-                    elif not battle_result[0] and battle_result[1] > 0:
+                    elif battle_result[0] and battle_result[1] == 0 and target.get_position() == "DEFENSE":
                         print(
                             "{attacker} WINS. {target} DESTROYED"\
                             .format(
